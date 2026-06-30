@@ -1,0 +1,6 @@
+{
+  "name": "Civic Issue Reporter",
+  "description": "A hyperlocal civic issue reporter where users upload photos of local issues, geotag them, and an AI agent analyzes severity to draft escalation actions.",
+  "requestFramePermissions": ["camera", "geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
