@@ -36,9 +36,8 @@ function parseIssue(row: any): CivicIssue {
 export async function initDb(): Promise<Database> {
   if (db) return db;
 
-  const dbPath = process.env.DB_PATH || (process.env.NODE_ENV === 'production'
-    ? path.join(os.tmpdir(), 'database.sqlite')
-    : './database.sqlite');
+  const dbPath = process.env.DB_PATH || '/tmp/database.sqlite';
+
 
   db = await open({
     filename: dbPath,
