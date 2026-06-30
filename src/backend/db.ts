@@ -1,6 +1,8 @@
 import sqlite3 from 'sqlite3';
 import { open, Database } from 'sqlite';
 import bcrypt from 'bcryptjs';
+import os from 'os';
+import path from 'path';
 import { CivicIssue } from '../types.js';
 
 // User Interface definition
@@ -34,7 +36,9 @@ function parseIssue(row: any): CivicIssue {
 export async function initDb(): Promise<Database> {
   if (db) return db;
 
-  const dbPath = process.env.DB_PATH || (process.env.NODE_ENV === 'production' ? '/tmp/database.sqlite' : './database.sqlite');
+  const dbPath = process.env.DB_PATH || (process.env.NODE_ENV === 'production'
+    ? path.join(os.tmpdir(), 'database.sqlite')
+    : './database.sqlite');
 
   db = await open({
     filename: dbPath,
