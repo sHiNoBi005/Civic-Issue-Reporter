@@ -23,7 +23,7 @@ import { CivicIssue } from './src/types.js';
 dotenv.config();
 
 const isProd = process.env.NODE_ENV === 'production';
-const PORT = 3000;
+const PORT = Number(process.env.PORT) || 3000;
 const JWT_SECRET = process.env.JWT_SECRET || 'civic-pulse-super-secret-key-12345';
 
 // 1. General API rate limiter (protects database / server endpoints)
